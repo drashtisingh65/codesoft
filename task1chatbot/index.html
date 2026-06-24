@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Campus Help Desk · Student Assistant</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Tabler Icons for UI -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/dist/tabler-icons.min.css" />
+  <!-- Google Font: Inter for clean UI text -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- =============================================
+       APP SHELL
+       ============================================= -->
+  <div class="app-shell">
+
+    <!-- ---- SIDEBAR ---- -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <div class="brand">
+          <span class="brand-dot"></span>
+          <span class="brand-name">Campus Help Desk</span>
+        </div>
+        <!-- Mobile close button -->
+        <button class="icon-btn" id="closeSidebar" aria-label="Close sidebar">
+          <i class="ti ti-x"></i>
+        </button>
+      </div>
+
+      <!-- Session list – populated by JS -->
+      <div class="sidebar-section-label">Chat history</div>
+      <ul class="session-list" id="sessionList" role="list"></ul>
+
+      <div class="sidebar-footer">
+        <button class="danger-btn" id="clearHistoryBtn">
+          <i class="ti ti-trash"></i> Clear all history
+        </button>
+      </div>
+    </aside>
+
+    <!-- ---- MAIN CHAT AREA ---- -->
+    <main class="chat-area">
+
+      <!-- Top bar -->
+      <header class="topbar">
+        <button class="icon-btn" id="menuBtn" aria-label="Open sidebar">
+          <i class="ti ti-menu-2"></i>
+        </button>
+        <div class="topbar-title">
+          <span class="status-dot" aria-hidden="true"></span>
+          Student Assistant
+        </div>
+        <div class="topbar-actions">
+          <button class="icon-btn" id="newChatBtn" aria-label="New chat" title="New chat">
+            <i class="ti ti-edit"></i>
+          </button>
+        </div>
+      </header>
+
+      <!-- Message feed -->
+      <div class="message-feed" id="messageFeed" role="log" aria-live="polite" aria-label="Chat messages">
+        <!-- Welcome card – shown only on fresh start -->
+        <div class="welcome-card" id="welcomeCard">
+          <div class="welcome-icon" aria-hidden="true">🎓</div>
+          <h1>Hello, I'm your Campus Assistant</h1>
+          <p>Ask me anything about admissions, courses, fees, hostel, library, or placements — or pick a topic below to get started.</p>
+        </div>
+
+        <!-- Messages are injected here by JS -->
+      </div>
+
+      <!-- Quick reply chips -->
+      <div class="quick-replies" id="quickReplies" role="group" aria-label="Quick reply options">
+        <button class="chip" data-query="Tell me about admissions">
+          <i class="ti ti-door-enter" aria-hidden="true"></i> Admission
+        </button>
+        <button class="chip" data-query="What courses are offered?">
+          <i class="ti ti-book" aria-hidden="true"></i> Courses
+        </button>
+        <button class="chip" data-query="What are the fees?">
+          <i class="ti ti-credit-card" aria-hidden="true"></i> Fees
+        </button>
+        <button class="chip" data-query="Tell me about scholarships">
+          <i class="ti ti-award" aria-hidden="true"></i> Scholarship
+        </button>
+        <button class="chip" data-query="Hostel facilities">
+          <i class="ti ti-building" aria-hidden="true"></i> Hostel
+        </button>
+        <button class="chip" data-query="Library timings">
+          <i class="ti ti-library" aria-hidden="true"></i> Library
+        </button>
+        <button class="chip" data-query="Exam schedule information">
+          <i class="ti ti-file-description" aria-hidden="true"></i> Exams
+        </button>
+        <button class="chip" data-query="Placement opportunities">
+          <i class="ti ti-briefcase" aria-hidden="true"></i> Placements
+        </button>
+        <button class="chip" data-query="Contact information">
+          <i class="ti ti-phone" aria-hidden="true"></i> Contact Us
+        </button>
+      </div>
+
+      <!-- Composer -->
+      <div class="composer">
+        <textarea
+          id="userInput"
+          class="composer-input"
+          placeholder="Ask a question…"
+          rows="1"
+          aria-label="Type your message"
+          maxlength="500"
+        ></textarea>
+        <button class="send-btn" id="sendBtn" aria-label="Send message">
+          <i class="ti ti-send"></i>
+        </button>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- =============================================
+       SIDEBAR OVERLAY (mobile)
+       ============================================= -->
+  <div class="sidebar-overlay" id="sidebarOverlay" aria-hidden="true"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
